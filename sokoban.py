@@ -47,9 +47,34 @@ def main():
             best = min(best, d)
 
         return best
+    
+    def print_state(state):
+        boxes, sy, sx = state
+
+        for y in range(height):
+            row = []
+
+            for x in range(width):
+                if (y, x) in walls:
+                    row.append('#')
+                elif (y, x) in boxes:
+                    row.append('X')
+                elif (y, x) == (sy, sx):
+                    row.append('S')
+                else:
+                    row.append('.')
+
+            print(''.join(row))
 
     def pretty_print(state):
-        print('solved')
+        while True:
+            print_state(state)
+            print()
+
+            if state not in previous:
+                break
+
+            state = previous[state]
 
     @cache
     def get_moves(state):
@@ -79,9 +104,9 @@ def main():
 
     while frontier:
         ideal, steps, state = heappop(frontier)
-        print(ideal, steps, ideal-steps, len(frontier))
 
         if ideal == steps:
+            print('yoyoyo')
             pretty_print(state)
             return
         
