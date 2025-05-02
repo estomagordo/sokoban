@@ -79,8 +79,9 @@ def main():
 
     while frontier:
         ideal, steps, state = heappop(frontier)
+        print(ideal, steps)
 
-        if ideal == 0:
+        if ideal == steps:
             pretty_print(state)
             return
         
