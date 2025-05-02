@@ -68,7 +68,7 @@ def main():
                     row.append('.')
 
             out.append(''.join(row))
-
+        
         return '\n'.join(out)
 
     def pretty_print(state):
@@ -82,6 +82,8 @@ def main():
 
             state = previous[state]
 
+        print(f'Found a solution in {len(out)-1} moves!')
+
         print('\n\n'.join(o for o in out[::-1]))
 
     @cache
@@ -93,7 +95,6 @@ def main():
         seen = {(y, x)}
 
         for fy, fx in frontier:
-            print(fy, fx)
             for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)):
 
                 step = (fy+dy, fx+dx)
