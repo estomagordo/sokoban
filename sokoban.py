@@ -82,7 +82,7 @@ def main():
 
             state = previous[state]
 
-        print(f'Found a solution in {len(out)-1} moves!')
+        print(f'Found a solution in {len(out)-1} moves!\n')
 
         print('\n\n'.join(o for o in out[::-1]))
 
