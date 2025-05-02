@@ -5,7 +5,17 @@ from sys import stdin
 
 
 def main():
-    grid = [line.rstrip() for line in stdin.readlines()]
+    # grid = [line.rstrip() for line in stdin.readlines()]
+    grid = [
+        '###',
+        '#O#',
+        '#.#',
+        '#.#',
+        '#X#',
+        '#.#',
+        '#S#',
+        '###'
+    ]
     walls = set()
     goals = []
     initial_boxes = []
@@ -49,6 +59,7 @@ def main():
         return best
     
     def print_state(state):
+        out = []
         boxes, sy, sx = state
 
         for y in range(height):
@@ -59,22 +70,29 @@ def main():
                     row.append('#')
                 elif (y, x) in boxes:
                     row.append('X')
+                elif (y, x) in goals:
+                    row.append('O')
                 elif (y, x) == (sy, sx):
                     row.append('S')
                 else:
                     row.append('.')
 
-            print(''.join(row))
+            out.append(''.join(row))
+
+        return '\n'.join(out)
 
     def pretty_print(state):
+        out = []
+
         while True:
-            print_state(state)
-            print()
+            out.append(print_state(state))
 
             if state not in previous:
                 break
 
             state = previous[state]
+
+        print('\n\n'.join(o for o in out[::-1]))
 
     @cache
     def get_moves(state):
@@ -85,7 +103,8 @@ def main():
         seen = {(y, x)}
 
         for fy, fx in frontier:
-            for dy, dx in product((-1, 1), (-1, 1)):
+            for dy, dx in ((-1, -0), (1, 0), (0, -1), (0, 1)):
+
                 step = (fy+dy, fx+dx)
                 if step in boxes:
                     behind = (fy+dy+dy, fx+dx+dx)
@@ -104,6 +123,8 @@ def main():
 
     while frontier:
         ideal, steps, state = heappop(frontier)
+        # print(ideal, steps, ideal-steps)
+        # print(state)
 
         if ideal == steps:
             print('yoyoyo')
