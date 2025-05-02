@@ -5,17 +5,17 @@ from sys import stdin
 
 
 def main():
-    # grid = [line.rstrip() for line in stdin.readlines()]
-    grid = [
-        '###',
-        '#O#',
-        '#.#',
-        '#.#',
-        '#X#',
-        '#.#',
-        '#S#',
-        '###'
-    ]
+    grid = [line.rstrip() for line in stdin.readlines()]
+    # grid = [
+    #     '###',
+    #     '#O#',
+    #     '#.#',
+    #     '#.#',
+    #     '#X#',
+    #     '#.#',
+    #     '#S#',
+    #     '###'
+    # ]
     walls = set()
     goals = []
     initial_boxes = []
