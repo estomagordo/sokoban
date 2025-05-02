@@ -6,16 +6,6 @@ from sys import stdin
 
 def main():
     grid = [line.rstrip() for line in stdin.readlines()]
-    # grid = [
-    #     '###',
-    #     '#O#',
-    #     '#.#',
-    #     '#.#',
-    #     '#X#',
-    #     '#.#',
-    #     '#S#',
-    #     '###'
-    # ]
     walls = set()
     goals = []
     initial_boxes = []
@@ -103,9 +93,11 @@ def main():
         seen = {(y, x)}
 
         for fy, fx in frontier:
-            for dy, dx in ((-1, -0), (1, 0), (0, -1), (0, 1)):
+            print(fy, fx)
+            for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)):
 
                 step = (fy+dy, fx+dx)
+
                 if step in boxes:
                     behind = (fy+dy+dy, fx+dx+dx)
 
@@ -123,11 +115,8 @@ def main():
 
     while frontier:
         ideal, steps, state = heappop(frontier)
-        # print(ideal, steps, ideal-steps)
-        # print(state)
 
         if ideal == steps:
-            print('yoyoyo')
             pretty_print(state)
             return
         
