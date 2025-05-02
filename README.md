@@ -18,6 +18,16 @@ Input
 ....####
 ```
 
+Legend
+```
+.   empty space
+#   wall
+O   goal square
+X   box
+S   player
+```
+
+Output
 ```
 Found a solution in 16 moves!
 
