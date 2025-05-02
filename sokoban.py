@@ -79,7 +79,7 @@ def main():
 
     while frontier:
         ideal, steps, state = heappop(frontier)
-        print(ideal, steps)
+        print(ideal, steps, ideal-steps, len(frontier))
 
         if ideal == steps:
             pretty_print(state)
@@ -93,6 +93,7 @@ def main():
 
             h = heuristic(dboxes)
 
+            previous[dstate] = state
             heappush(frontier, (steps+h+1, steps+1, dstate))
 
 if __name__ == '__main__':
