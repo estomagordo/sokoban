@@ -27,6 +27,9 @@ def main():
                 goals.append((y, x))
             case 'X':
                 initial_boxes.append((y, x))
+            case 'H':
+                goals.append((y, x))
+                initial_boxes.append((y, x))
 
     initial_state = (tuple(sorted(initial_boxes)), py, px)
 

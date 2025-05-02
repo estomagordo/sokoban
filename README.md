@@ -25,6 +25,7 @@ Legend
 O   goal square
 X   box
 S   player
+H   a goal square that is initially covered by a box (not used in example)
 ```
 
 Output
